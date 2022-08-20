@@ -1,0 +1,19 @@
+
+{% extends 'base/base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block pagecontent %}
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="display-6">Welcome to Energy Conservation<i class="fas fa-globe-americas"></i></h1>
+        <p class="lead">Login or register as an user</p>
+      </div>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a class="btn btn-secondary btn-lg btn-block" href="accounts/login" role="button">Login</a>
+        <a class="btn btn-info btn-lg btn-block" href="signup" role="button">Register</a>
+      </form>
+    </div>
+{% endblock %}

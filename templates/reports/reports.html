@@ -1,0 +1,39 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block pagecontent %}
+<div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Consumption of Rooms</h5>
+          <p class="card-text">Report to visualize the consumptions of the rooms.</p>
+          <a href="{% url 'list_report' %}" class="btn btn-secondary">Go to Report!!</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Total Consumption</h5>
+          <p class="card-text">Visualize total consumption per Room with Sum of Electrity with selection of Dates.</p>
+          <a href="{% url 'total_consumption' %}" class="btn btn-secondary">Go to Report!!</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Actions of Rooms</h5>
+            <p class="card-text">Report for Landlords to visualize quantity of Conservation Actions per Room and Type</p>
+            <a href="{% url 'landlord_report' %}" class="btn btn-secondary">Go to Report!!</a>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+{% endblock %}

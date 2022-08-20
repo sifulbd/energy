@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block pagecontent %}
+    <div class="container">
+        <br>
+        <br>
+        <h2>Register Energy Consumption</h2>
+        <h4>For Room {{room_number}}</h4> 
+        <br>
+        <br>
+        <form class="col-md-4" method="POST" action="{% url 'register_consumption' room_number %}"> 
+            {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-secondary"> Register!!
+            </button>
+        </form>
+
+    </div>
+{% endblock %}

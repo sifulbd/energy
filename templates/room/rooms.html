@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %} 
+
+
+{% block title %} Rooms {% endblock %} 
+
+{% block pagecontent %}
+<div class="container">
+
+    <div>
+        <a class="col-md-12 btn btn-dark"  href="{% url 'create_room' %}" role="button">Create Room</a>
+    </div>
+  <div class="d-flex flex-row flex-wrap">
+    {% if cuartos != None %}
+    {% for room in cuartos %}
+    <div class="card col-md-4" style="">
+      <div class="card-body">
+        <h5 class="card-title">Room Number: {{room.room_number}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+          Occupant: {{room.student.user.first_name}} {{room.student.user.last_name}}
+        </h6>
+        <p class="card-text">Address: {{room.address}}</p>
+        <a href="{% url 'edit_room' room.room_number %}" class="card-link">Modifiy Room</a>
+        <a href="{% url 'register_consumption' room.room_number %}" class="card-link">Add Comsuption</a>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}  
+  </div>
+</div>
+{% endblock %}

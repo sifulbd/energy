@@ -1,0 +1,21 @@
+
+{% extends 'base/base.html' %}
+
+{% block title %} Logout {% endblock %}
+
+{% block pagecontent %}
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="display-6">You have been logged out of the System<i class="fas fa-globe-americas"></i></h1>
+        <p class="card-text">
+          Thanks for your time
+        </p>
+      </div>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a class="btn btn-secondary btn-lg btn-block" href="/login" role="button">Login</a>
+        <a class="btn btn-info btn-lg btn-block" href="/signup" role="button">Register</a>
+      </form> 
+    </div>
+{% endblock %}

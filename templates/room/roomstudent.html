@@ -1,0 +1,60 @@
+{% extends 'base/base.html' %} {% block title %} Room of
+{{request.user.username}} {% endblock %} {% block pagecontent %}
+<div class="row mt-5">
+  <div class="col-md-4">
+    <h4>Room Information</h4>
+    <label class="mb-1">Address:</label>
+    <h5>{{room.address}}</h5>
+
+    <label class="mb-1">Occupant:</label>
+    <h5>{{request.user.first_name}} {{request.user.last_name}}</h5>
+
+    <label class="mb-1">Square Meters:</label>
+    <h5>{{room.square_meters}}</h5>
+
+    <label class="mb-1">Windows:</label>
+    <h5>{{room.windows}}</h5>
+  </div>
+
+  <div class="col-md-4 float-right">
+    <h4>Appliances</h4>
+
+    {% for appliance in appliances %}
+    <div class="card rounded">
+      <div class="card-title text-center">
+        <h5>{{appliance.appliance_name}}</h5>
+      </div>
+      <div class="card-body">
+        <h6>Type: {{appliance.type.type}}</h6>
+        <h6>Class: {{appliance.get_label_class_display}}</h6>
+      </div>
+      <a class="btn btn-secondary float-right" href="{% url 'create_action' room.room_number appliance.id %}">Add Action</a>
+    </div>
+    {% endfor %}
+    {% if room != None %}
+    <a class="btn btn-primary float-right" href="{% url 'create_appliance' room.room_number %}">Add Appliance</a>
+    {% else %}
+    <div>
+      <h5>You have not been assigned to a room yet</h5>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="col-md-4 float-right">
+    <h4>Actions</h4>
+    
+    {% for action in actions %}
+    <div class="card rounded">
+      <div class="card-title text-center">
+        <h5>{{action.appliance.appliance_name}}</h5>
+      </div>
+      <div class="card-body">
+        <h6>Date: {{action.date}}</h6>
+        <h6>Type: {{action.action_appliance.name}}</h6>
+      </div>
+    </div>
+    {% endfor %}
+    
+  </div>
+</div>
+{% endblock %}
